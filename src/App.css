@@ -68,6 +68,11 @@ body {
   cursor: pointer;
 }
 
+.tab-leagues:hover,
+.tab-standings:hover {
+  box-shadow: .3rem .3rem .5rem var(--primary-color);
+}
+
 .copyright {
   font-size: 1.2rem;
   font-family: 'Courier New', Courier, monospace;
