@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 
 const Standings = ({ data }) => {
+  const [loading, setLoading] = useState(false)
   const [selectedLeague, setSelectedLeague] = useState('Select a league');
-  console.log(data);
+  const [selectedYear, setSelectedYear] = useState('Year');
+
+  useEffect(() => {
+    setLoading(true);
+
+    const fetchStandingsData = async () => {
+      const res = await fetch(`https://api-football-standings.azharimm.site/leagues/${selectedLeague}/standings?season=${selectedYear}`);
+      const standingsData = await res.json();
+      console.log(standingsData)
+      return standingsData;
+    }
+
+    fetchStandingsData();
+
+  }, [selectedLeague, selectedYear])
 
   return (
     <div className="standings-container">
@@ -23,6 +38,24 @@ const Standings = ({ data }) => {
           );
         })}
       </select>
+      <select 
+        name="select-year" 
+        id="select-year"
+        onChange={(e) => setSelectedYear(e.target.value)}
+        defaultValue={selectedYear}>
+          <option value="">{selectedYear}</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+        </select>
     </div>
   );
 };
