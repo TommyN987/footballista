@@ -92,10 +92,12 @@ body {
   gap: 1rem;
   padding: 1rem;
   background-color: var(--tertiary-color);
+  box-shadow: .3rem .3rem .5rem var(--secondary-color);
 }
 
 .league-div:hover {
-  box-shadow: .3rem .3rem .5rem var(--secondary-color)
+  
+  transform: scale(1.05);
 }
 
 .league-div > img {
@@ -119,19 +121,11 @@ body {
   .leagues-container {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .league-div {
-    box-shadow: .3rem .3rem .5rem var(--secondary-color);
-  }
 }
 
 @media screen and  (max-width: 960px) {
   .leagues-container {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .league-div {
-    box-shadow: .3rem .3rem .5rem var(--secondary-color);
   }
 }
 
@@ -152,9 +146,5 @@ body {
 
   h2 {
     font-size: 1.2rem;
-  }
-
-  .league-div {
-    box-shadow: .3rem .3rem .5rem var(--secondary-color);
   }
 }

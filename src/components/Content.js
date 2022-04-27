@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Leagues from "./Leagues";
 import Standings from "./Standings";
 
 const Content = () => {
 
   const [activeTab, setActiveTab] = useState('leagues');
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    
+    const fetchData = async (url) => {
+      const res = await fetch(url);
+      const apiData = await res.json();
+      return apiData.data;
+    };
+
+    fetchData('https://api-football-standings.azharimm.site/leagues')
+      .then((result) => {
+        setData(result)
+      })
+  }, [])
+
+  console.log(data)
 
   return (
     <div className="content-container">
@@ -31,7 +48,7 @@ const Content = () => {
           <h2>Standings</h2>
         </div>
       </div>
-      {activeTab === 'leagues' ? <Leagues /> : <Standings />}
+      {activeTab === 'leagues' ? <Leagues data={data} /> : <Standings data={data} />}
     </div>
   )
 }
