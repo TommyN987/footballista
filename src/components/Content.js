@@ -14,7 +14,7 @@ const Content = () => {
           onClick={() => setActiveTab('leagues')} style={
           {
             color: activeTab === 'leagues' ? 'var(--secondary-color)' : null,
-            backgroundColor: activeTab === 'leagues' ? 'var(--primary-color)' : null,
+            backgroundColor: activeTab === 'leagues' ? 'var(--tertiary-color)' : null,
             border: activeTab === 'leagues' ? '2px solid var(--secondary-color' : null
           }}>
           <h2>Leagues</h2>
@@ -25,7 +25,7 @@ const Content = () => {
           style={
             {
               color: activeTab === 'standings' ? 'var(--secondary-color)' : null,
-              backgroundColor: activeTab === 'standings' ? 'var(--primary-color)' : null,
+              backgroundColor: activeTab === 'standings' ? 'var(--tertiary-color)' : null,
               border: activeTab === 'standings' ? '2px solid var(--secondary-color' : null
             }}>
           <h2>Standings</h2>
