@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 
 const Standings = ({ data }) => {
-  const [loading, setLoading] = useState(false)
-  const [selectedLeague, setSelectedLeague] = useState('Select a league');
-  const [selectedYear, setSelectedYear] = useState('Year');
+  const [loading, setLoading] = useState(false);
+  const [standings, setStandings] = useState({});
+  const [selectedLeague, setSelectedLeague] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -12,13 +13,17 @@ const Standings = ({ data }) => {
     const fetchStandingsData = async () => {
       const res = await fetch(`https://api-football-standings.azharimm.site/leagues/${selectedLeague}/standings?season=${selectedYear}`);
       const standingsData = await res.json();
-      console.log(standingsData)
-      return standingsData;
+      return standingsData.data
     }
 
-    fetchStandingsData();
-
-  }, [selectedLeague, selectedYear])
+    fetchStandingsData()
+      .then((res) => {
+        setStandings(res);
+        setLoading(false);
+        return res
+      })
+      .then((data) => console.log(data));
+  },[selectedLeague, selectedYear])
 
   return (
     <div className="standings-container">
@@ -26,8 +31,8 @@ const Standings = ({ data }) => {
         name="select-league" 
         id="select-league"
         onChange={(e) => setSelectedLeague(e.target.value)}
-        defaultValue={selectedLeague}>
-          <option value="">{selectedLeague}</option>
+        defaultValue='def'>
+          <option value="def" disabled>Select a league</option>
           {data.map((league) => {
             return (
               <option 
@@ -42,8 +47,8 @@ const Standings = ({ data }) => {
         name="select-year" 
         id="select-year"
         onChange={(e) => setSelectedYear(e.target.value)}
-        defaultValue={selectedYear}>
-          <option value="">{selectedYear}</option>
+        defaultValue='def'>
+          <option value="def" disabled>Year</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
@@ -56,6 +61,8 @@ const Standings = ({ data }) => {
           <option value="2012">2012</option>
           <option value="2011">2011</option>
         </select>
+        { loading && <InfinitySpin color='rgb(28, 27, 27)' />}
+        {/* { standings !== {} && } */}
     </div>
   );
 };
