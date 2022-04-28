@@ -61,15 +61,15 @@ body {
   border: 2px solid var(--secondary-color);
   border-radius: .5rem;
   text-align: center;
-  color: var(--tertiary-color);
-  background-color: var(--secondary-color);
   padding: .5rem 0;
   cursor: pointer;
+  box-shadow: .3rem .3rem .5rem var(--secondary-color);
+  background-color: var(--tertiary-color);
 }
 
 .tab-leagues:hover,
 .tab-standings:hover {
-  box-shadow: .3rem .3rem .5rem var(--secondary-color);
+  transform: scale(1.05);
 }
 
 .leagues-container {
@@ -79,7 +79,6 @@ body {
   justify-items: center;
   gap: 1rem;
   margin: 0 auto 1.5rem;
-
 }
 
 .league-div {
@@ -96,7 +95,6 @@ body {
 }
 
 .league-div:hover {
-  
   transform: scale(1.05);
 }
 
@@ -121,31 +119,46 @@ body {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
+  max-width: 100%;
+  padding: 0 .7rem;
+
 }
 
 .select-container select {
   padding: .5rem;
   font-size: 1.2rem;
-  border: 1px solid var(--secondary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 1rem;
   background-color: var(--tertiary-color);
   color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.select-container select:first-child{
+  max-width: 70%;
 }
 
 .standings {
-  border: 1px solid red;
-  width: 75%;
+  border: 2px solid var(--secondary-color);
   background-color: var(--tertiary-color);
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 th {
   border: 1px solid black;
   letter-spacing: .1rem;
-  padding: .1rem;
+  padding: .2rem .5rem;
+  width: 50px;
 }
 
 td {
   letter-spacing: .1rem;
+}
+
+tr {
+  height: 40px;
+  border-bottom: 1px solid black;
 }
 
 tr td:not(:nth-child(2)) {
@@ -153,11 +166,15 @@ tr td:not(:nth-child(2)) {
 }
 
 tr td:nth-child(2) {
-  width: 300px;
+  min-width: 350px;
+  display: flex;
+  align-items: center;
 }
 
 .team-logo {
   width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
 }
 
 .footer {

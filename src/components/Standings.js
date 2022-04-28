@@ -21,7 +21,7 @@ const Standings = ({ data }) => {
 
     fetchStandingsData().then((res) => {
       setLoading(false);
-      console.log(res)
+      console.log(res);
       return res;
     });
   }, [selectedLeagueId, selectedYear]);
@@ -62,40 +62,48 @@ const Standings = ({ data }) => {
           <option value="2011">2011</option>
         </select>
       </div>
-      {loading && <InfinitySpin color="rgb(28, 27, 27)" />}
-      {!loading && (
-        <table className='standings'>
-          <thead>
-            <tr className='row'>
-              <th>Rank</th>
-              <th>Logo + Team</th>
-              <th>Games Played</th>
-              <th>Wins</th>
-              <th>Losses</th>
-              <th>Ties</th>
-              <th>Points for</th>
-              <th>Points against</th>
-              <th>Point diff</th>
-            </tr>
-          </thead>
-          <tbody>
-            {standings.map((team) => {
-              return (
-                <tr key={team.stats[8].value}>
-                  <td>{team.stats[8].value}</td>
-                  <td><img className='team-logo' src={team.team.logos[0].href} alt="Logo" /> {team.team.name}</td>
-                  <td>{team.stats[3].value}</td>
-                  <td>{team.stats[0].value}</td>
-                  <td>{team.stats[1].value}</td>
-                  <td>{team.stats[2].value}</td>
-                  <td>{team.stats[4].value}</td>
-                  <td>{team.stats[5].value}</td>
-                  <td>{team.stats[9].value}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      {loading ? <InfinitySpin color="rgb(28, 27, 27)" /> :
+      (
+        <div className="standings">
+          <table>
+            <thead>
+              <tr className="row">
+                <th>Rank</th>
+                <th>Logo + Team</th>
+                <th>Games Played</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Ties</th>
+                <th>Points for</th>
+                <th>Points against</th>
+                <th>Point diff</th>
+              </tr>
+            </thead>
+            <tbody>
+              {standings.map((team) => {
+                return (
+                  <tr key={team.stats[8].value}>
+                    <td>{team.stats[8].value}</td>
+                    <td>
+                      <img
+                        className="team-logo"
+                        src={team.team.logos ? team.team.logos[0].href : 'https://4.bp.blogspot.com/-w1l1EOjfliY/XJFNrih6r1I/AAAAAAAAJO8/YHgJOsZIPVM6MPYgEL35aRNA-WQ7HAi8QCK4BGAYYCw/s1600/icon%2Bfootball%2Bsoccer%2Bball.png'}
+                        alt="Logo"
+                      />{team.team.name}
+                    </td>
+                    <td>{team.stats[3].value}</td>
+                    <td>{team.stats[0].value}</td>
+                    <td>{team.stats[1].value}</td>
+                    <td>{team.stats[2].value}</td>
+                    <td>{team.stats[4].value}</td>
+                    <td>{team.stats[5].value}</td>
+                    <td>{team.stats[9].value}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
