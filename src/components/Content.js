@@ -21,8 +21,6 @@ const Content = () => {
       })
   }, [])
 
-  console.log(data)
-
   return (
     <div className="content-container">
       <div className="tabs">

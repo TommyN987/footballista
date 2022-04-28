@@ -108,6 +108,58 @@ body {
   text-align: center;
 }
 
+.standings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.select-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.select-container select {
+  padding: .5rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 1rem;
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+}
+
+.standings {
+  border: 1px solid red;
+  width: 75%;
+  background-color: var(--tertiary-color);
+}
+
+th {
+  border: 1px solid black;
+  letter-spacing: .1rem;
+  padding: .1rem;
+}
+
+td {
+  letter-spacing: .1rem;
+}
+
+tr td:not(:nth-child(2)) {
+  text-align: center;
+}
+
+tr td:nth-child(2) {
+  width: 300px;
+}
+
+.team-logo {
+  width: 2rem;
+}
+
 .footer {
   padding: 1rem;
 }
