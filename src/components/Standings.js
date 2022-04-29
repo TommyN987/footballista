@@ -9,21 +9,20 @@ const Standings = ({ data }) => {
 
   useEffect(() => {
     setLoading(true);
-
     const fetchStandingsData = async () => {
       const res = await fetch(
         `https://api-football-standings.azharimm.site/leagues/${selectedLeagueId}/standings?season=${selectedYear}`
       );
       const standingsData = await res.json();
       setStandings(standingsData.data.standings);
-      return standingsData.data.standings;
+      setLoading(false);
     };
 
-    fetchStandingsData().then((res) => {
-      setLoading(false);
-      console.log(res);
-      return res;
-    });
+    fetchStandingsData()
+      .catch((error) => {
+        alert('No available data for this year.')
+      });
+
   }, [selectedLeagueId, selectedYear]);
 
   return (
@@ -69,7 +68,7 @@ const Standings = ({ data }) => {
             <thead>
               <tr className="row">
                 <th>Rank</th>
-                <th>Logo + Team</th>
+                <th>Team</th>
                 <th>Games Played</th>
                 <th>Wins</th>
                 <th>Losses</th>
@@ -80,7 +79,9 @@ const Standings = ({ data }) => {
               </tr>
             </thead>
             <tbody>
-              {standings.map((team) => {
+              {standings 
+              ? 
+              standings.map((team) => {
                 return (
                   <tr key={team.stats[8].value}>
                     <td>{team.stats[8].value}</td>
@@ -100,7 +101,9 @@ const Standings = ({ data }) => {
                     <td>{team.stats[9].value}</td>
                   </tr>
                 );
-              })}
+              }) 
+              : 
+              null}
             </tbody>
           </table>
         </div>
