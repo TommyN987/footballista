@@ -158,8 +158,13 @@ th {
   cursor: pointer;
 }
 
+thead tr:first-child {
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+}
+
 th:hover {
-  color: rgb(1, 70, 22);
+  color: var(--primary-color);
 }
 
 td {
