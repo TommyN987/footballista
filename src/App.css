@@ -155,13 +155,10 @@ th {
   letter-spacing: .1rem;
   padding: .2rem .5rem;
   width: 50px;
-}
-
-th:not(:nth-child(2)) {
   cursor: pointer;
 }
 
-th:not(:nth-child(2)):hover {
+th:hover {
   color: rgb(1, 70, 22);
 }
 
