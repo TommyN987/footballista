@@ -41,7 +41,6 @@ const Standings = ({ data, urlPart }) => {
       const standingsData = await res.json();
       setStandings(standingsData.data.standings);
       setLoading(false);
-      console.log(standingsData.data.standings)
     };
 
     fetchStandingsData()
@@ -52,12 +51,16 @@ const Standings = ({ data, urlPart }) => {
   }, [selectedLeagueId, selectedYear]);
 
   useEffect(() => {
+    if (!standings) return;
+
     const newStandings = sortByStat([...standings], sorterStat, sortAsc);
     setStandings(newStandings);
 
   }, [sorterStat, sortAsc]);
 
   useEffect(() => {
+    if (!standings) return;
+    
     const newStandings = sortByName([...standings], sortName);
     setStandings(newStandings);
   }, [sortName])
@@ -108,9 +111,7 @@ const Standings = ({ data, urlPart }) => {
                   setSorterStat(8);
                   setSortAsc(sortAsc => !sortAsc);
                   }}>Rank</th>
-                <th onClick={() => {
-                  setSortName(sortName => !sortName)
-                }}>Team</th>
+                <th onClick={() => setSortName(sortName => !sortName)}>Team</th>
                 <th onClick={() => {
                   setSorterStat(3)
                   setSortAsc(sortAsc => !sortAsc);
@@ -166,7 +167,7 @@ const Standings = ({ data, urlPart }) => {
                 );
               }) 
               : 
-              null}
+              <div className='error'>No data available for this season</div>}
             </tbody>
           </table>
         </div>
