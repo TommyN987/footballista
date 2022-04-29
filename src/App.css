@@ -64,7 +64,8 @@ body {
   padding: .5rem 0;
   cursor: pointer;
   box-shadow: .3rem .3rem .5rem var(--secondary-color);
-  background-color: var(--tertiary-color);
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
 }
 
 .tab-leagues:hover,
@@ -158,6 +159,10 @@ th {
 
 th:not(:nth-child(2)) {
   cursor: pointer;
+}
+
+th:not(:nth-child(2)):hover {
+  color: rgb(1, 70, 22);
 }
 
 td {
