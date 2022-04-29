@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 
-const Standings = ({ data }) => {
+const Standings = ({ data, urlPart }) => {
   const [loading, setLoading] = useState(false);
   const [standings, setStandings] = useState([]);
-  const [selectedLeagueId, setSelectedLeagueId] = useState('ger.1');
+  const [selectedLeagueId, setSelectedLeagueId] = useState(urlPart || 'ger.1');
   const [selectedYear, setSelectedYear] = useState('2021');
 
   useEffect(() => {
@@ -16,6 +16,7 @@ const Standings = ({ data }) => {
       const standingsData = await res.json();
       setStandings(standingsData.data.standings);
       setLoading(false);
+      console.log(standingsData.data.standings)
     };
 
     fetchStandingsData()

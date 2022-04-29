@@ -92,6 +92,7 @@ body {
   padding: 1rem;
   background-color: var(--tertiary-color);
   box-shadow: .3rem .3rem .5rem var(--secondary-color);
+  cursor: pointer;
 }
 
 .league-div:hover {
@@ -145,8 +146,11 @@ body {
   overflow-x: auto;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 th {
-  border: 1px solid black;
   letter-spacing: .1rem;
   padding: .2rem .5rem;
   width: 50px;
@@ -158,17 +162,22 @@ td {
 
 tr {
   height: 40px;
-  border-bottom: 1px solid black;
 }
 
 tr td:not(:nth-child(2)) {
   text-align: center;
 }
 
+thead tr,
+tbody tr:nth-child(2n) {
+  background-color: rgb(211, 226, 201);
+}
+
 tr td:nth-child(2) {
   min-width: 350px;
   display: flex;
   align-items: center;
+  padding-top: .3rem;
 }
 
 .team-logo {

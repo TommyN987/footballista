@@ -5,6 +5,7 @@ import Standings from "./Standings";
 const Content = () => {
 
   const [activeTab, setActiveTab] = useState('leagues');
+  const [urlPart, setUrlPart] = useState(null);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Content = () => {
 
     fetchData('https://api-football-standings.azharimm.site/leagues')
       .then((result) => {
-        setData(result)
+        setData(result);
       })
   }, [])
 
@@ -44,7 +45,7 @@ const Content = () => {
           <h2>Standings</h2>
         </div>
       </div>
-      {activeTab === 'leagues' ? <Leagues data={data} /> : <Standings data={data} />}
+      {activeTab === 'leagues' ? <Leagues data={data} setUrlPart={setUrlPart} setActiveTab={setActiveTab} /> : <Standings data={data} urlPart={urlPart} />}
     </div>
   )
 }
