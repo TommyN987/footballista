@@ -6,6 +6,7 @@ const Standings = ({ data, urlPart }) => {
   const [standings, setStandings] = useState([]);
   const [selectedLeagueId, setSelectedLeagueId] = useState(urlPart || 'ger.1');
   const [selectedYear, setSelectedYear] = useState('2021');
+  const [sorterStat, setSorterStat] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -25,6 +26,23 @@ const Standings = ({ data, urlPart }) => {
       });
 
   }, [selectedLeagueId, selectedYear]);
+
+  useEffect(() => {
+    let newStandings = [...standings];
+
+    const sortBy = (arr, stat) => {
+      const sorter = (a, b) => {
+        return b.stats[stat].value - a.stats[stat].value;
+      };
+      
+      arr.sort(sorter);
+      return arr;
+    };
+
+    newStandings = sortBy(newStandings, sorterStat);
+    setStandings(newStandings);
+
+  }, [sorterStat]);
 
   return (
     <div className="standings-container">
@@ -68,15 +86,15 @@ const Standings = ({ data, urlPart }) => {
           <table>
             <thead>
               <tr className="row">
-                <th>Rank</th>
+                <th onClick={() => setSorterStat(8)}>Rank</th>
                 <th>Team</th>
-                <th>Games Played</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Ties</th>
-                <th>Points for</th>
-                <th>Points against</th>
-                <th>Point diff</th>
+                <th onClick={() => setSorterStat(3)}>Games Played</th>
+                <th onClick={() => setSorterStat(0)}>Wins</th>
+                <th onClick={() => setSorterStat(1)}>Losses</th>
+                <th onClick={() => setSorterStat(2)}>Ties</th>
+                <th onClick={() => setSorterStat(4)}>Points for</th>
+                <th onClick={() => setSorterStat(5)}>Points against</th>
+                <th onClick={() => setSorterStat(9)}>Point diff</th>
               </tr>
             </thead>
             <tbody>

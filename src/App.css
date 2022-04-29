@@ -156,6 +156,10 @@ th {
   width: 50px;
 }
 
+th:not(:nth-child(2)) {
+  cursor: pointer;
+}
+
 td {
   letter-spacing: .1rem;
 }
