@@ -50,21 +50,6 @@ const Standings = ({ data, urlPart }) => {
 
   }, [selectedLeagueId, selectedYear]);
 
-  useEffect(() => {
-    if (!standings) return;
-
-    const newStandings = sortByStat([...standings], sorterStat, sortAsc);
-    setStandings(newStandings);
-
-  }, [sorterStat, sortAsc]);
-
-  useEffect(() => {
-    if (!standings) return;
-    
-    const newStandings = sortByName([...standings], sortName);
-    setStandings(newStandings);
-  }, [sortName])
-
   return (
     <div className="standings-container">
       <div className="select-container">
@@ -110,35 +95,55 @@ const Standings = ({ data, urlPart }) => {
                 <th onClick={() => {
                   setSorterStat(8);
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Rank</th>
-                <th onClick={() => setSortName(sortName => !sortName)}>Team</th>
+                <th onClick={() => {
+                  setSortName(sortName => !sortName)
+                  if (!standings) return;
+                  setStandings(sortByName([...standings], sortName));
+                  }}>Team</th>
                 <th onClick={() => {
                   setSorterStat(3)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Games Played</th>
                 <th onClick={() => {
                   setSorterStat(0)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Wins</th>
                 <th onClick={() => {
                   setSorterStat(1)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Losses</th>
                 <th onClick={() => {
                   setSorterStat(2)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Ties</th>
                 <th onClick={() => {
                   setSorterStat(4)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Points for</th>
                 <th onClick={() => {
                   setSorterStat(5)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Points against</th>
                 <th onClick={() => {
                   setSorterStat(9)
                   setSortAsc(sortAsc => !sortAsc);
+                  if (!standings) return;    
+                  setStandings(sortByStat([...standings], sorterStat, sortAsc));
                   }}>Point diff</th>
               </tr>
             </thead>
