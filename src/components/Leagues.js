@@ -5,8 +5,9 @@ const Leagues = ({ data, setUrlPart, setActiveTab }) => {
       {data.map((league) => {
         return (
           <div key={league.id} className='league-div' onClick={() => {
-            setUrlPart(league.id)
-            setActiveTab('standings')
+            setUrlPart(league.id);
+            setActiveTab('standings');
+            window.scrollTo({ top: 0, behavior: 'smooth'})
             }}>
             <img src={league.logos.light} alt="League Logo" />
             <h3>{league.name}</h3>
