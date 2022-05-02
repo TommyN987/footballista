@@ -6,9 +6,9 @@ const Standings = ({ data, urlPart }) => {
   const [standings, setStandings] = useState([]);
   const [selectedLeagueId, setSelectedLeagueId] = useState(urlPart || 'ger.1');
   const [selectedYear, setSelectedYear] = useState('2021');
-  const [sorterStat, setSorterStat] = useState('');
   const [sortAsc, setSortAsc] = useState(false);
   const [sortName, setSortName] = useState(false);
+
 
   const sortByStat = (arr, stat, dir) => {
     const sorter = (a, b) => {
@@ -23,9 +23,8 @@ const Standings = ({ data, urlPart }) => {
 
   const handleSortByStat = (indexInJson) => {
     if (!standings) return;    
-    setSorterStat(indexInJson);
     setSortAsc(sortAsc => !sortAsc);
-    setStandings(sortByStat([...standings], sorterStat, sortAsc));
+    setStandings(sortByStat([...standings], indexInJson, sortAsc))
   };
 
   const sortByName = (arr, dir) => {
