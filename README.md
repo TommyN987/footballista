@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# FOOTBALLISTA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## A REACT APPLICATION
 
-## Available Scripts
+[Live Version](https://footballista-app.netlify.app/)
 
-In the project directory, you can run:
+Footballista is a fully responsive React application for football (soccer) statistics. It offers 20 leagues from around the globe and 10 years of standings statistics. I'm getting the data from the [Football Standings API](https://github.com/azharimm/football-standings-api). I did not utilize any UI library for the app's styles, all CSS is custom-built.
 
-### `npm start`
+### LEAGUES
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I used CSS grid for the basic layout of the Leagues tab. The league cards are rendered upon mapping of the data retrieved from the API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![landing](https://user-images.githubusercontent.com/96293671/175395328-53b367db-89da-4944-af9d-08a65378ea50.png)
 
-### `npm test`
+### STANDINGS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If the user does not choose a league from the league cards, but clickes on the Standings tab, the default league to display is the 2021 season of the German Bundesliga. The user can change both the league, and the season with the select dropdown menu. Each standings table is sortable by any of the available stats as well as alphabetically.
 
-### `npm run build`
+![bundesliga2021](https://user-images.githubusercontent.com/96293671/175396078-9398cad5-5d8e-4a58-91cc-a697f6ebca2f.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![premier2018](https://user-images.githubusercontent.com/96293671/175396097-0db91ead-37ce-47c2-b778-847c5a98e6d9.png)
